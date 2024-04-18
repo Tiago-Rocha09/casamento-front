@@ -74,8 +74,8 @@ export const CounterComponent = ({ targetDate }: CounterComponentProps) => {
 
   return (
     <article className="flex flex-col gap-8 items-center">
-      <h2 className="text-3xl md:text-5xl font-bold">Contagem regressiva</h2>
-      <div className="grid grid-flow-row grid-cols-4 gap-4">
+      <h2 className="text-2xl md:text-5xl font-bold">Contagem regressiva</h2>
+      <div className="grid grid-flow-row grid-cols-4 gap-2 md:gap-4">
         {timerComponents.length ? (
           timerComponents
         ) : (

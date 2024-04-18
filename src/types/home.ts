@@ -53,7 +53,7 @@ export type APIGiftListResponseProps = {
       updatedAt: string;
       publishedAt: string;
       mensagem_do_titulo: string;
-      mensagem_de_gradecimento: string;
+      mensagem_de_agradecimento: string;
       presentes: {
         data: APIGiftResponseProps[]
       }

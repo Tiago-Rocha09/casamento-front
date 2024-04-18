@@ -7,7 +7,7 @@ export const LocationSection = async () => {
   const locationInfo = await getLocationHome();
 
   return (
-    <section className="odd:bg-gray-500 even:bg-white odd:text-white even:text-black py-20" id="local-section">
+    <section className="odd:bg-gray-500 even:bg-white odd:text-white even:text-black py-20 px-4 md:px-0" id="local-section">
       <section className="container mx-auto flex flex-col gap-6">
         <hgroup>
           {locationInfo?.title && (

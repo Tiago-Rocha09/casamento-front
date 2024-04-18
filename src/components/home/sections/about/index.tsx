@@ -8,7 +8,7 @@ export const AboutSection = async () => {
   const aboutData = await getAboutHome()
 
   return (
-    <section className="odd:bg-gray-500 even:bg-white odd:text-white even:text-black py-20" id="about-section">
+    <section className="odd:bg-gray-500 even:bg-white odd:text-white even:text-black py-20 px-4 md:px-0" id="about-section">
       <section className="container mx-auto flex flex-col gap-6">
         {aboutData?.title && (
           <h2

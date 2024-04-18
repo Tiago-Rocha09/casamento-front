@@ -24,7 +24,7 @@ function formatGitfListResponse(data: APIGiftListResponseProps): GiftListProps |
   return {
     title: attributes.titulo,
     subtitle: attributes.mensagem_do_titulo,
-    thanksMessage: attributes.mensagem_de_gradecimento,
+    thanksMessage: attributes.mensagem_de_agradecimento,
     gifts: gifts
   };
 }

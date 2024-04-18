@@ -5,13 +5,13 @@ import Image from "next/image";
 import { ModalGift } from "../modalGift";
 import { useState } from "react";
 
-type CardItemProps = { id: number; thanksMessage: string } & Pick<
-  Gift,
-  "attributes"
->["attributes"];
+type CardItemProps = {
+  id: number;
+  thanksMessage: string;
+  callback: () => void;
+} & Pick<Gift, "attributes">["attributes"];
 
 export const CardItem = (props: CardItemProps) => {
-
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
     setShowModal((prev) => !prev);
@@ -43,6 +43,7 @@ export const CardItem = (props: CardItemProps) => {
         show={showModal}
         toggleModal={toggleModal}
         thanksMessage={props.thanksMessage}
+        callback={props.callback}
       />
     </article>
   );

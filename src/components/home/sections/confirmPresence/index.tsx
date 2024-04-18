@@ -30,7 +30,7 @@ export const ConfirmPresenceSection = ({
   };
 
   return (
-    <section className="odd:bg-gray-500 even:bg-white odd:text-white py-20" id="confirm-presence-section">
+    <section className="odd:bg-gray-500 even:bg-white odd:text-white py-20 px-4 md:px-0" id="confirm-presence-section">
       <section className="container mx-auto flex flex-col gap-6">
         {children}
         <div className="bg-gray-100 py-3 px-6 rounded-2xl text-black">

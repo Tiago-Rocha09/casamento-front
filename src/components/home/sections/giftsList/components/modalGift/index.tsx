@@ -11,10 +11,11 @@ type ModalGiftProps = {
   show: boolean;
   thanksMessage: string;
   toggleModal: () => void;
+  callback: () => void;
 };
 
 export const ModalGift = (props: ModalGiftProps) => {
-  const { id, show, toggleModal } = props;
+  const { id, show, toggleModal, callback } = props;
   const [name, setName] = useState<string>();
   const [errorName, setErrorName] = useState<string>("");
   const [gift, setGift] = useState<Gift | null>(null);
@@ -34,6 +35,7 @@ export const ModalGift = (props: ModalGiftProps) => {
         setIsLoading(true);
         await setGiftGuest(props.id, name);
         setIsLoading(false);
+        callback();
         return setShowThanksMessage(true);
       }
       setErrorName("Informe seu nome...");
@@ -108,13 +110,6 @@ export const ModalGift = (props: ModalGiftProps) => {
                   onClick={toggleModal}
                 >
                   Fechar
-                </button>
-
-                <button
-                  className="bg-white text-black rounded px-4 py-2 cursor-pointer hover:bg-gray-100 border-[1px] border-gray-300 flex mt-5 mb-4"
-                  onClick={toggleModal}
-                >
-                  Enviar uma mensagem
                 </button>
               </div>
             </>
