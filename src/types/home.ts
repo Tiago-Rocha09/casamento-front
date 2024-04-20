@@ -165,3 +165,26 @@ export type MainInfoProps = {
   formattedDate: string
   names: string
 };
+
+export type APIExtraInfoResponseProps = {
+  data: {
+    id: number;
+    attributes: {
+      conteudo: [
+        {
+          id: number
+          titulo: string | null
+          subtitulo: string | null
+          conteudo: string | null
+        }
+      ]
+    };
+  };
+};
+
+export type ExtraInfoProps = {
+  id: number
+  title: string | null
+  subTitle: string | null
+  content: string | null
+};

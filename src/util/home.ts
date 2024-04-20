@@ -1,4 +1,4 @@
-import { APIAboutResponseProps, APIBannerResponseProps, APIConfirmResponseProps, APIGiftListResponseProps, APIGiftResponseProps, APILocalResponseProps, APIMainInfoResponseProps, AboutProps, BannerProps, ConfirmPresenceProps, Gift, GiftListProps, LocalProps, MainInfoProps } from "@/types/home";
+import { APIAboutResponseProps, APIBannerResponseProps, APIConfirmResponseProps, APIExtraInfoResponseProps, APIGiftListResponseProps, APIGiftResponseProps, APILocalResponseProps, APIMainInfoResponseProps, AboutProps, BannerProps, ConfirmPresenceProps, ExtraInfoProps, Gift, GiftListProps, LocalProps, MainInfoProps } from "@/types/home";
 
 function formatAboutResponse(data: APIAboutResponseProps): AboutProps | null {
   if (!data?.data?.attributes) {
@@ -100,7 +100,6 @@ function formatMainInfoResponse(data: APIMainInfoResponseProps): MainInfoProps |
   }
 
   const attributes = data.data.attributes;
-  console.log({ attributesss: attributes });
   const date = new Date(attributes.data);
 
   // Format the date
@@ -112,6 +111,25 @@ function formatMainInfoResponse(data: APIMainInfoResponseProps): MainInfoProps |
   };
 }
 
+
+function formatExtraInfoResponse(data: APIExtraInfoResponseProps): ExtraInfoProps[] | null {
+  if (!data?.data?.attributes) {
+    return null;
+  }
+
+  const attributes = data.data.attributes;
+
+  const content = attributes.conteudo || []
+
+  return content.map(item => ({
+    id: item.id,
+    title: item.titulo,
+    subTitle: item.subtitulo,
+    content: item.conteudo
+  }))
+
+}
+
 export {
   formatAboutResponse,
   formatGitfListResponse,
@@ -119,5 +137,7 @@ export {
   formatConfirmPresenceResponse,
   formatLocationResponse,
   formatBannerResponse,
-  formatMainInfoResponse
+  formatMainInfoResponse,
+  formatExtraInfoResponse
 };
+

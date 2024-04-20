@@ -1,4 +1,4 @@
-import { APIAboutResponseProps, APIBannerResponseProps, APIConfirmResponseProps, APILocalResponseProps, APIMainInfoResponseProps } from "@/types/home";
+import { APIAboutResponseProps, APIBannerResponseProps, APIConfirmResponseProps, APIExtraInfoResponseProps, APILocalResponseProps, APIMainInfoResponseProps } from "@/types/home";
 import { api } from "./api";
 
 export const homePage = {
@@ -134,6 +134,22 @@ export const homePage = {
   getMainInfo: async () => {
     const response: { data: APIMainInfoResponseProps } = await api
       .get("/main-info", {
+        params: {
+          populate: "*",
+        },
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((response) => {
+        return response;
+      });
+
+    return response;
+  },
+  getExtraInfo: async () => {
+    const response: { data: APIExtraInfoResponseProps } = await api
+      .get("/sessao-extra", {
         params: {
           populate: "*",
         },

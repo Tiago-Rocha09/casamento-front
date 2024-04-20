@@ -6,6 +6,7 @@ import {
   GiftsListSection,
   MainSection,
 } from "@/components/home/sections";
+import { ExtraInfoSection } from "@/components/home/sections/ExtraInfo";
 import { HeaderConfirmPresence } from "@/components/home/sections/confirmPresence/components/header";
 import { LocationSection } from "@/components/home/sections/location";
 import { useBanner } from "@/components/home/sections/main/hooks";
@@ -27,6 +28,7 @@ export default async function Home() {
         <HeaderConfirmPresence />
       </ConfirmPresenceSection>
       <LocationSection />
+      <ExtraInfoSection />
     </main>
   );
 }

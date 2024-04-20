@@ -16,7 +16,6 @@ export const GiftsListSection = () => {
   useEffect(() => {
     fetchList()
   }, []);
-  console.log({giftList});
   
   return (
     <section
