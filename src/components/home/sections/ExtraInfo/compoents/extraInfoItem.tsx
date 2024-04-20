@@ -3,7 +3,7 @@ import { ExtraInfoProps } from "@/types/home";
 
 export const ExtraInfoItem = (props: ExtraInfoProps) => {
   return (
-    <div className="flex flex-col gap-6 mb-20">
+    <div className="flex flex-col gap-6 mb-10">
       {props?.title && (
         <h2
           dangerouslySetInnerHTML={{

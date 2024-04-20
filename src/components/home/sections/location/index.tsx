@@ -7,9 +7,12 @@ export const LocationSection = async () => {
   const locationInfo = await getLocationHome();
 
   return (
-    <section className="odd:bg-gray-500 even:bg-white odd:text-white even:text-black py-20 px-4 md:px-0" id="local-section">
+    <section
+      className="odd:bg-gray-500 even:bg-white odd:text-white even:text-black py-10 px-4 md:px-0"
+      id="local-section"
+    >
       <section className="container mx-auto flex flex-col gap-6">
-        <hgroup>
+        <hgroup className="flex flex-col gap-2">
           {locationInfo?.title && (
             <h2
               dangerouslySetInnerHTML={{
@@ -26,10 +29,12 @@ export const LocationSection = async () => {
               className="text-xl md:text-2xl text-black font-bold"
             />
           )}
+        </hgroup>
+        <div>
           {locationInfo?.textCeremony && (
             <RichTextDisplay data={locationInfo?.textCeremony} />
           )}
-        </hgroup>
+        </div>
 
         <div className="overflow-hidden pb-[56.25%] relative h-0">
           <iframe
@@ -44,7 +49,7 @@ export const LocationSection = async () => {
           ></iframe>
         </div>
 
-        <hgroup>
+        <hgroup className="pt-3 flex flex-col gap-2">
           {locationInfo?.subtitleParty && (
             <h4
               dangerouslySetInnerHTML={{
@@ -53,10 +58,12 @@ export const LocationSection = async () => {
               className="text-xl md:text-2xl text-black font-bold"
             />
           )}
+        </hgroup>
+        <div>
           {locationInfo?.textParty && (
             <RichTextDisplay data={locationInfo?.textParty} />
           )}
-        </hgroup>
+        </div>
 
         <div className="overflow-hidden pb-[56.25%] relative h-0">
           <iframe

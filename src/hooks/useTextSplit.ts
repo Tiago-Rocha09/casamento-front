@@ -6,7 +6,7 @@ function splitParagraph(text: string): string[] {
 
 function splitBold(text: string): string[] {
   const textSplitted = text.split('**')
-  return textSplitted?.filter(item => !!item)
+  return textSplitted
 
 }
 
@@ -59,7 +59,9 @@ export const useTextSplit = (
               return `<strong>${itemBold}</strong>`
             }
             return itemBold
-          })
+          })?.filter( itemBold => !!itemBold)
+          console.log({ boldFiltered });
+
           boldFiltered.forEach(itemB => {
             const linkSplitted = splitLink(itemB)
 
