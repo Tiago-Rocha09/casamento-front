@@ -12,7 +12,11 @@ const getElementValue = ({ type, value }: UseTextSplitReturnProps) => {
   switch (type) {
     case Status.TEXT:
       return (
-        <p dangerouslySetInnerHTML={{ __html: value }} key={value.toString()} />
+        <p
+          className="[&>iframe]:w-full"
+          dangerouslySetInnerHTML={{ __html: value }}
+          key={value.toString()}
+        />
       );
     case Status.IMG:
       return (
@@ -31,7 +35,7 @@ const getElementValue = ({ type, value }: UseTextSplitReturnProps) => {
 
 export const RichTextDisplay = ({ data }: { data: string }): ReactNode => {
   const elements = useTextSplit(data);
-    
+
   if (!elements) {
     return null;
   }
