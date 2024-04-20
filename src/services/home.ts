@@ -1,4 +1,4 @@
-import { APIAboutResponseProps, APIBannerResponseProps, APIConfirmResponseProps, APIExtraInfoResponseProps, APILocalResponseProps, APIMainInfoResponseProps } from "@/types/home";
+import { APIAboutResponseProps, APIBannerResponseProps, APIConfirmResponseProps, APIExtraInfoResponseProps, APILocalResponseProps, APIMainInfoResponseProps, APIMetaDataResponseProps } from "@/types/home";
 import { api } from "./api";
 
 export const homePage = {
@@ -163,5 +163,20 @@ export const homePage = {
 
     return response;
   },
+  getMetaData: async () => {
+    const response: { data: APIMetaDataResponseProps } = await api
+      .get("/compartilhar-no-whats-app", {
+        params: {
+          populate: "*",
+        },
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((response) => {
+        return response;
+      });
 
+    return response;
+  },
 };

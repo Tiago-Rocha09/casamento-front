@@ -60,7 +60,6 @@ export const useTextSplit = (
             }
             return itemBold
           })?.filter( itemBold => !!itemBold)
-          console.log({ boldFiltered });
 
           boldFiltered.forEach(itemB => {
             const linkSplitted = splitLink(itemB)
@@ -107,7 +106,6 @@ export const useTextSplit = (
 
       elements.push(...formattedString?.map(item => ({ type: "text", value: item })));
     }
-    console.log({ elements });
 
     return elements;
   } catch (error) {

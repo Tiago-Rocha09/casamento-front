@@ -188,3 +188,30 @@ export type ExtraInfoProps = {
   subTitle: string | null
   content: string | null
 };
+
+export type APIMetaDataResponseProps = {
+  data: {
+    id: number;
+    attributes: {
+      titulo: string | null
+      descricao: string | null
+      imagem: {
+        data: {
+          id: number
+          attributes: {
+            alternativeText: string | null
+            width: number
+            height: number
+            url: string
+          }
+        }
+      };
+    };
+  };
+};
+
+export type MetaDataProps = {
+  title: string | null
+  description: string | null
+  image: string | null
+};

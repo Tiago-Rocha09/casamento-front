@@ -9,7 +9,6 @@ export function useExtraInfo() {
     const data = response.data;
 
     const formattedResponse = formatExtraInfoResponse(data);
-    console.log({ formattedResponse });
 
     return formattedResponse;
   }
