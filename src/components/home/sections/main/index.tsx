@@ -19,7 +19,7 @@ export const MainSection = async ({ mainInfoData }: MainSectionProps) => {
         width={imageData?.width} //2400
         height={imageData?.height} //800
         alt={imageData?.alt || "Imagem noivos"}
-        className="w-full h-auto brightness-50"
+        className="w-full h-auto"
       />
       <hgroup className="absolute inset-0 flex items-center justify-end flex-col mb-2 md:mb-10">
         {mainInfoData?.names && (
