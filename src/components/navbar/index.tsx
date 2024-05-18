@@ -12,6 +12,9 @@ export const NavBar = () => {
           <a href="#gift-list-section">Lista de presentes</a>
         </li>
         <li className="flex items-center py-2 px-4 cursor-pointer">
+          <a href="#lua-de-mel">Operação lua de mel</a>
+        </li>
+        <li className="flex items-center py-2 px-4 cursor-pointer">
           <a href="#confirm-presence-section">Confirme sua presença</a>
         </li>
         <li className="flex items-center py-2 px-4 cursor-pointer">

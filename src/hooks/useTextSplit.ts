@@ -20,7 +20,7 @@ function splitLink(text: string): string[] {
 
     if (match.index > lastIndex) {
       const tSlice = text.slice(lastIndex, match.index)
-      elements.push(`${tSlice}<a href="${match[1]}" target="_blank" style="text-decoration: underline">${match[1]}</a>`)
+      elements.push(`${tSlice}<a href="${match[1]}" target="_blank" style="text-decoration: underline;word-break: break-all; white-space: normal;">${match[1]}</a>`)
     }
 
 
