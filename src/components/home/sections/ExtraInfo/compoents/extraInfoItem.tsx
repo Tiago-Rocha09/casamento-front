@@ -9,7 +9,7 @@ export const ExtraInfoItem = (props: ExtraInfoProps) => {
           dangerouslySetInnerHTML={{
             __html: props.title || "Confirme sua presença",
           }}
-          className="text-2xl md:text-3xl text-white font-bold"
+          className="text-2xl md:text-3xl text-black font-bold"
         />
       )}
       {props?.subTitle && (
@@ -17,7 +17,7 @@ export const ExtraInfoItem = (props: ExtraInfoProps) => {
           dangerouslySetInnerHTML={{
             __html: props.subTitle || "Local da cerimônia",
           }}
-          className="text-white font-bold"
+          className="text-black font-bold"
         />
       )}
       {props?.content?.length && (

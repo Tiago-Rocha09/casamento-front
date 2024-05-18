@@ -1,4 +1,4 @@
-import { APIAboutResponseProps, APIBannerResponseProps, APIConfirmResponseProps, APIExtraInfoResponseProps, APIGiftListResponseProps, APIGiftResponseProps, APILocalResponseProps, APIMainInfoResponseProps, APIMetaDataResponseProps, AboutProps, BannerProps, ConfirmPresenceProps, ExtraInfoProps, Gift, GiftListProps, LocalProps, MainInfoProps, MetaDataProps } from "@/types/home";
+import { APIAboutResponseProps, APIAreaPixResponseProps, APIBannerResponseProps, APIConfirmResponseProps, APIExtraInfoResponseProps, APIGiftListResponseProps, APIGiftResponseProps, APILocalResponseProps, APIMainInfoResponseProps, APIMetaDataResponseProps, AboutProps, AreaPixProps, BannerProps, ConfirmPresenceProps, ExtraInfoProps, Gift, GiftListProps, LocalProps, MainInfoProps, MetaDataProps } from "@/types/home";
 
 function formatAboutResponse(data: APIAboutResponseProps): AboutProps | null {
   if (!data?.data?.attributes) {
@@ -149,6 +149,19 @@ function formatMetaDataResponse(data: APIMetaDataResponseProps): MetaDataProps |
 
 }
 
+function formatAreaPixResponse(data: APIAreaPixResponseProps): AreaPixProps | null {
+  if (!data?.data?.attributes) {
+    return null;
+  }
+
+  const attributes = data.data.attributes;
+  return {
+    title: attributes.titulo,
+    subtitle: attributes.subtitulo,
+    text: attributes.texto
+  };
+}
+
 export {
   formatAboutResponse,
   formatGitfListResponse,
@@ -158,6 +171,7 @@ export {
   formatBannerResponse,
   formatMainInfoResponse,
   formatExtraInfoResponse,
-  formatMetaDataResponse
+  formatMetaDataResponse,
+  formatAreaPixResponse
 };
 

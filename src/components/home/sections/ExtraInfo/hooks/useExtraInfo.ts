@@ -8,7 +8,7 @@ export function useExtraInfo() {
     const response = await getExtraInfo();
     const data = response.data;
 
-    const formattedResponse = formatExtraInfoResponse(data);
+    const formattedResponse = formatExtraInfoResponse(data);    
 
     return formattedResponse;
   }

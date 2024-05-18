@@ -25,7 +25,7 @@ const getElementValue = ({ type, value }: UseTextSplitReturnProps) => {
           width={1024}
           height={1024}
           alt={(value as TextSplitImageProps).alt || "Imagem noivos"}
-          className="h-auto brightness-50 m-auto rounded-2xl mt-3"
+          className="h-auto m-auto rounded-2xl mt-3 w-full md:w-auto"
         />
       );
     default:

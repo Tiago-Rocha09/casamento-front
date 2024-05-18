@@ -12,8 +12,8 @@ export function useConfirmPresence() {
     return formattedResponse;
   }
 
-  async function setConfirmPresence(name: string, confirm: "Sim" | "Não") {
-    await createConfirmPresence(name, confirm);
+  async function setConfirmPresence(name: string, confirm: "Sim" | "Não", message: string, qtdPerson: number) {
+    await createConfirmPresence(name, confirm, message, qtdPerson);
     return true;
   }
 

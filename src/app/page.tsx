@@ -7,6 +7,7 @@ import {
   MainSection,
 } from "@/components/home/sections";
 import { ExtraInfoSection } from "@/components/home/sections/ExtraInfo";
+import { AreaPixSection } from "@/components/home/sections/areaPix";
 import { HeaderConfirmPresence } from "@/components/home/sections/confirmPresence/components/header";
 import { LocationSection } from "@/components/home/sections/location";
 import { useBanner } from "@/components/home/sections/main/hooks";
@@ -24,6 +25,7 @@ export default async function Home() {
       </CountdownSection>
       <AboutSection />
       <GiftsListSection />
+      <AreaPixSection />
       <ConfirmPresenceSection>
         <HeaderConfirmPresence />
       </ConfirmPresenceSection>

@@ -1,6 +1,6 @@
 "use client";
 import { Loading } from "@/components/loading";
-import { ReactNode, useState } from "react";
+import { ChangeEvent, ChangeEventHandler, ReactNode, useState } from "react";
 import { useConfirmPresence } from "./hooks";
 
 export const ConfirmPresenceSection = ({
@@ -9,21 +9,70 @@ export const ConfirmPresenceSection = ({
   children: ReactNode;
 }) => {
   const { createConfirmPresence } = useConfirmPresence();
-  const [name, setName] = useState<string>();
+  const [names, setNames] = useState<(string | null)[]>([""]);
+  const [qtdPerson, setQtdPerson] = useState<number>(1);
+  const [message, setMessage] = useState<string>();
   const [confirm, setConfirm] = useState<number>(1);
-  const [errorName, setErrorName] = useState<string>("");
+  const [errorNames, setErrorNames] = useState<string[]>([""]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [confirmed, setConfirmed] = useState(false);
 
+  const handleQtdPersonChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const newValue = Number(event.target.value)
+    setQtdPerson(newValue)
+    const namesTemp = [];
+    for (let index = 0; index < newValue; index++) {
+      if (!names[index]) {
+        namesTemp[index] = null
+      }
+      else {
+        namesTemp[index] = names[index]
+      }
+    }
+
+    setNames(namesTemp)
+  }
+
+  const handleNameChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
+    const newNames = names.map((itemN, indexN) => {
+      if (indexN === index) {
+        return event.target.value
+      }
+      return itemN
+    })
+    const newErrorNames = errorNames.map((itemN, indexN) => {
+      if (indexN === index) return ""
+      return itemN
+    })
+
+    setNames(newNames);
+    setErrorNames(newErrorNames);
+
+  }
+
   const handleSubmit = async () => {
     try {
-      if (name) {
-        setIsLoading(true);
-        await createConfirmPresence(name, confirm === 1 ? "Sim" : "Não");
-        setConfirmed(true);
-        return setIsLoading(false);
+      const errorNamesTemp: string[] = []
+      let hasError = false
+      names.forEach((element, index) => {
+        if (!element) {
+          errorNamesTemp[index] = "Informe o nome do convidado..."
+          hasError = true
+        } else {
+          errorNamesTemp[index] = ""
+        }
+      });
+
+      if (hasError && confirm) {
+        return setErrorNames(errorNamesTemp)
       }
-      setErrorName("Informe seu nome...");
+      const namesTemp = names.join("\n")
+
+      setIsLoading(true);
+      await createConfirmPresence(namesTemp, confirm === 1 ? "Sim" : "Não", message || '', confirm === 1 ? qtdPerson : 0);
+      setConfirmed(true);
+      return setIsLoading(false);
+
     } catch (error) {
       setIsLoading(false);
     }
@@ -35,24 +84,7 @@ export const ConfirmPresenceSection = ({
         {children}
         <div className="bg-gray-100 py-3 px-6 rounded-2xl text-black">
           <form className="flex flex-col gap-3">
-            <fieldset>
-              <label className="block">
-                <span className="w-full block">Nome</span>
-                <input
-                  value={name}
-                  disabled={confirmed}
-                  onChange={(event) => {
-                    setName(event.target.value);
-                    setErrorName("");
-                  }}
-                  placeholder="Insira seu nome..."
-                  className={`p-2 rounded border-[1px] w-full md:w-1/2 ${
-                    errorName ? "outline-red-600 border-red-600" : ""
-                  }`}
-                />
-              </label>
-              {errorName && <small className="text-red-600">{errorName}</small>}
-            </fieldset>
+
             <fieldset>
               Você irá ao casamento?
               <div className="flex gap-4">
@@ -79,6 +111,51 @@ export const ConfirmPresenceSection = ({
                   Não
                 </label>
               </div>
+            </fieldset>
+            <fieldset className={confirm === 1 ? 'block' : 'hidden'}>
+              <label className="block">
+                <span className="w-full block">Quantidade de pessoas incluindo você</span>
+                <select value={qtdPerson.toString()} onChange={handleQtdPersonChange} disabled={confirmed} className={`p-2 rounded ${confirmed ? '' : 'bg-white'}`}>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                </select>
+              </label>
+            </fieldset>
+            {
+              confirm === 1 ? Array(qtdPerson).fill(1).map((item, index) => {
+                return <fieldset key={index.toString()}>
+                  <label className="block">
+                    <span className="w-full block">Convidado {index + 1}</span>
+                    <input
+                      value={names[index]?.toString()}
+                      disabled={confirmed}
+                      onChange={(event) => handleNameChange(event, index)}
+                      placeholder="Insira o nome do convidado..."
+                      className={`p-2 rounded border-[1px] w-full md:w-1/2 ${errorNames[index] ? "outline-red-600 border-red-600" : ""
+                        }`}
+                    />
+                  </label>
+                  {errorNames[index] && <small className="text-red-600">{errorNames[index]}</small>}
+                </fieldset>
+              }) : null
+            }
+            <fieldset>
+              <label className="block">
+                <span className="w-full block">Deixe uma mensagem para os noivos</span>
+                <textarea
+                  value={message}
+                  disabled={confirmed}
+                  onChange={(event) => {
+                    setMessage(event.target.value);
+                  }}
+                  placeholder="Digite uma mensagem..."
+                  className={`p-2 rounded border-[1px] w-full md:w-1/2`}
+                  rows={5}
+                />
+              </label>
             </fieldset>
             {!confirmed && (
               <button

@@ -215,3 +215,22 @@ export type MetaDataProps = {
   description: string | null
   image: string | null
 };
+
+export type APIAreaPixResponseProps = {
+  data: {
+    id: number;
+    attributes: {
+      subtitulo: string;
+      titulo: string;
+      texto: string;
+      createdAt: string;
+      updatedAt: string;
+    };
+  };
+};
+
+export type AreaPixProps = {
+  title: string,
+  subtitle: string,
+  text: string,
+}

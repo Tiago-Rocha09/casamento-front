@@ -12,7 +12,7 @@ export const HeaderConfirmPresence = async () => {
           dangerouslySetInnerHTML={{
             __html: confirmPresenceData.title || "Confirme sua presença",
           }}
-          className="text-2xl md:text-3xl text-white font-bold"
+          className="text-2xl md:text-3xl text-black font-bold"
         />
       )}
       {confirmPresenceData?.text && (

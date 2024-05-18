@@ -18,7 +18,7 @@ export const LocationSection = async () => {
               dangerouslySetInnerHTML={{
                 __html: locationInfo.title || "Confirme sua presença",
               }}
-              className="text-2xl md:text-3xl text-black font-bold"
+              className="text-2xl md:text-3xl text-white font-bold"
             />
           )}
           {locationInfo?.subtitleCeremony && (
@@ -26,7 +26,7 @@ export const LocationSection = async () => {
               dangerouslySetInnerHTML={{
                 __html: locationInfo.subtitleCeremony || "Local da cerimônia",
               }}
-              className="text-xl md:text-2xl text-black font-bold"
+              className="text-xl md:text-2xl text-white font-bold"
             />
           )}
         </hgroup>
@@ -55,7 +55,7 @@ export const LocationSection = async () => {
               dangerouslySetInnerHTML={{
                 __html: locationInfo.subtitleParty || "Local da recepção",
               }}
-              className="text-xl md:text-2xl text-black font-bold"
+              className="text-xl md:text-2xl text-white font-bold"
             />
           )}
         </hgroup>
