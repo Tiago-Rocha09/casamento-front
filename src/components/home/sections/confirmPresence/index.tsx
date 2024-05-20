@@ -1,6 +1,6 @@
 "use client";
 import { Loading } from "@/components/loading";
-import { ChangeEvent, ChangeEventHandler, ReactNode, useState } from "react";
+import { ChangeEvent, ChangeEventHandler, ReactNode, useEffect, useState } from "react";
 import { useConfirmPresence } from "./hooks";
 
 export const ConfirmPresenceSection = ({
@@ -16,6 +16,7 @@ export const ConfirmPresenceSection = ({
   const [errorNames, setErrorNames] = useState<string[]>([""]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [confirmed, setConfirmed] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const handleQtdPersonChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newValue = Number(event.target.value)
@@ -78,8 +79,48 @@ export const ConfirmPresenceSection = ({
     }
   };
 
+  useEffect(() => {
+    const images = Array.from(document.images);
+    if (images.length === 0) {
+      setImagesLoaded(true);
+      return;
+    }
+
+    const handleImageLoad = () => {
+      if (images.every(img => img.complete)) {
+        setImagesLoaded(true);
+      }
+    };
+
+    images.forEach(img => {
+      if (img.complete) {
+        handleImageLoad();
+      } else {
+        img.addEventListener('load', handleImageLoad);
+        img.addEventListener('error', handleImageLoad);
+      }
+    });
+
+    return () => {
+      images.forEach(img => {
+        img.removeEventListener('load', handleImageLoad);
+        img.removeEventListener('error', handleImageLoad);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    if (imagesLoaded && window.location.hash === '#confirm-presence-section') {
+      const section = document.getElementById('confirm-presence-section');
+      if (section) {
+        section.scrollIntoView();
+      }
+    }
+  }, [imagesLoaded, window.location]);
+
   return (
     <section className="odd:bg-gray-500 even:bg-white odd:text-white py-20 px-4 md:px-0" id="confirm-presence-section">
+      {!imagesLoaded && <div className="fixed z-10 bg-black top-0 left-0 w-screen h-screen opacity-90 flex justify-center items-center"><Loading className="w-12 h-12" /></div>}
       <section className="container mx-auto flex flex-col gap-6">
         {children}
         <div className="bg-gray-100 py-3 px-6 rounded-2xl text-black">

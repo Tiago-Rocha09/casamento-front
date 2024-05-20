@@ -20,7 +20,7 @@ const getElementValue = ({ type, value }: UseTextSplitReturnProps) => {
       );
     case Status.IMG:
       return (
-        <Image
+        <img
           src={(value as TextSplitImageProps).url}
           width={1024}
           height={1024}
