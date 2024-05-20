@@ -80,33 +80,12 @@ export const ConfirmPresenceSection = ({
   };
 
   useEffect(() => {
-    const images = Array.from(document.images);
-    if (images.length === 0) {
-      setImagesLoaded(true);
-      return;
-    }
+    const timer = setTimeout(() => {
+      setImagesLoaded(true)
+    }, 3000);
 
-    const handleImageLoad = () => {
-      if (images.every(img => img.complete)) {
-        setImagesLoaded(true);
-      }
-    };
-
-    images.forEach(img => {
-      if (img.complete) {
-        handleImageLoad();
-      } else {
-        img.addEventListener('load', handleImageLoad);
-        img.addEventListener('error', handleImageLoad);
-      }
-    });
-
-    return () => {
-      images.forEach(img => {
-        img.removeEventListener('load', handleImageLoad);
-        img.removeEventListener('error', handleImageLoad);
-      });
-    };
+    // Clean up the timeout if the component unmounts
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
