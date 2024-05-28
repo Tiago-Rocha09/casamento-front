@@ -2,6 +2,7 @@
 import { Loading } from "@/components/loading";
 import { ChangeEvent, ChangeEventHandler, ReactNode, useEffect, useState } from "react";
 import { useConfirmPresence } from "./hooks";
+import { MessageList } from "./components/messagesList";
 
 export const ConfirmPresenceSection = ({
   children,
@@ -190,6 +191,7 @@ export const ConfirmPresenceSection = ({
             )}
           </form>
         </div>
+        {<MessageList shouldRefresh={confirmed} />}
       </section>
     </section>
   );

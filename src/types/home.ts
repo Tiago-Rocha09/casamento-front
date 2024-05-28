@@ -24,25 +24,24 @@ export type UseTextSplitReturnProps = {
 };
 
 export type APIGiftResponseProps = {
-  id: number,
+  id: number;
   attributes: {
-    nome: string
-    convidado: string | null
-    descricao: string
+    nome: string;
+    convidado: string | null;
+    descricao: string;
     imagem: {
       data: {
-        id: number
+        id: number;
         attributes: {
-          alternativeText: string | null
-          width: number
-          height: number
-          url: string
-        }
-      }
-    }
-  }
+          alternativeText: string | null;
+          width: number;
+          height: number;
+          url: string;
+        };
+      };
+    };
+  };
 };
-
 
 export type APIGiftListResponseProps = {
   data: {
@@ -55,33 +54,33 @@ export type APIGiftListResponseProps = {
       mensagem_do_titulo: string;
       mensagem_de_agradecimento: string;
       presentes: {
-        data: APIGiftResponseProps[]
-      }
+        data: APIGiftResponseProps[];
+      };
     };
   };
 };
 
 export type Gift = {
-  id: number,
+  id: number;
   attributes: {
-    hasGuest: boolean
-    description: string
-    name: string
+    hasGuest: boolean;
+    description: string;
+    name: string;
     image: {
-      alt: string
-      width: number
-      height: number
-      url: string
-    }
-  }
-}
+      alt: string;
+      width: number;
+      height: number;
+      url: string;
+    };
+  };
+};
 
 export type GiftListProps = {
-  title: string,
-  subtitle: string,
-  thanksMessage: string
-  gifts: Gift[]
-}
+  title: string;
+  subtitle: string;
+  thanksMessage: string;
+  gifts: Gift[];
+};
 
 export type APIConfirmResponseProps = {
   data: {
@@ -113,14 +112,13 @@ export type APILocalResponseProps = {
   };
 };
 
-
 export type LocalProps = {
-  title: string,
-  subtitleCeremony: string,
-  textCeremony: string,
-  subtitleParty: string,
-  textParty: string,
-}
+  title: string;
+  subtitleCeremony: string;
+  textCeremony: string;
+  subtitleParty: string;
+  textParty: string;
+};
 
 export type APIBannerResponseProps = {
   data: {
@@ -128,14 +126,14 @@ export type APIBannerResponseProps = {
     attributes: {
       imagem: {
         data: {
-          id: number
+          id: number;
           attributes: {
-            alternativeText: string | null
-            width: number
-            height: number
-            url: string
-          }
-        }
+            alternativeText: string | null;
+            width: number;
+            height: number;
+            url: string;
+          };
+        };
       };
     };
   };
@@ -143,27 +141,27 @@ export type APIBannerResponseProps = {
 
 export type BannerProps = {
   image: {
-    alt: string
-    width: number
-    height: number
-    url: string
-  }
+    alt: string;
+    width: number;
+    height: number;
+    url: string;
+  };
 };
 
 export type APIMainInfoResponseProps = {
   data: {
     id: number;
     attributes: {
-      data: string,
-      nome_dos_noivos: string
+      data: string;
+      nome_dos_noivos: string;
     };
   };
 };
 
 export type MainInfoProps = {
-  date: string
-  formattedDate: string
-  names: string
+  date: string;
+  formattedDate: string;
+  names: string;
 };
 
 export type APIExtraInfoResponseProps = {
@@ -172,48 +170,48 @@ export type APIExtraInfoResponseProps = {
     attributes: {
       conteudo: [
         {
-          id: number
-          titulo: string | null
-          subtitulo: string | null
-          conteudo: string | null
+          id: number;
+          titulo: string | null;
+          subtitulo: string | null;
+          conteudo: string | null;
         }
-      ]
+      ];
     };
   };
 };
 
 export type ExtraInfoProps = {
-  id: number
-  title: string | null
-  subTitle: string | null
-  content: string | null
+  id: number;
+  title: string | null;
+  subTitle: string | null;
+  content: string | null;
 };
 
 export type APIMetaDataResponseProps = {
   data: {
     id: number;
     attributes: {
-      titulo: string | null
-      descricao: string | null
+      titulo: string | null;
+      descricao: string | null;
       imagem: {
         data: {
-          id: number
+          id: number;
           attributes: {
-            alternativeText: string | null
-            width: number
-            height: number
-            url: string
-          }
-        }
+            alternativeText: string | null;
+            width: number;
+            height: number;
+            url: string;
+          };
+        };
       };
     };
   };
 };
 
 export type MetaDataProps = {
-  title: string | null
-  description: string | null
-  image: string | null
+  title: string | null;
+  description: string | null;
+  image: string | null;
 };
 
 export type APIAreaPixResponseProps = {
@@ -230,7 +228,24 @@ export type APIAreaPixResponseProps = {
 };
 
 export type AreaPixProps = {
-  title: string,
-  subtitle: string,
-  text: string,
-}
+  title: string;
+  subtitle: string;
+  text: string;
+};
+
+export type APIConfirmationResponseProps = {
+  data: {
+    id: number;
+    attributes: {
+      createdAt: string;
+      mensagem: string;
+      nome: string;
+    };
+  }[];
+};
+
+export type MessageItemProps = {
+  guest: string;
+  message: string;
+  date?: Date
+};

@@ -2,6 +2,7 @@ import {
   APIAboutResponseProps,
   APIAreaPixResponseProps,
   APIBannerResponseProps,
+  APIConfirmationResponseProps,
   APIConfirmResponseProps,
   APIExtraInfoResponseProps,
   APILocalResponseProps,
@@ -207,6 +208,23 @@ export const homePage = {
       .get("/area-pix", {
         params: {
           populate: "*",
+        },
+      })
+      .then((response) => {
+        return response;
+      })
+      .catch((response) => {
+        return response;
+      });
+
+    return response;
+  },
+  getConfirmations: async () => {
+    const response: { data: APIConfirmationResponseProps } = await api
+      .get("/confirmacao-de-presencas", {
+        params: {
+          populate: "*",
+          'sort[0]':'createdAt:desc'
         },
       })
       .then((response) => {
