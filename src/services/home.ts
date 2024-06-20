@@ -224,7 +224,8 @@ export const homePage = {
       .get("/confirmacao-de-presencas", {
         params: {
           populate: "*",
-          'sort[0]':'createdAt:desc'
+          'sort[0]':'createdAt:desc',
+          'pagination[pageSize]': 100
         },
       })
       .then((response) => {
